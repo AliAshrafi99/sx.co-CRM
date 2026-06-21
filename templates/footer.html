@@ -1,0 +1,38 @@
+<!-- پایان محتوای اختصاصی صفحه -->
+    </main>
+
+    <!-- ───────── فوتر ───────── -->
+    <footer class="app-footer">
+      <span>© ۱۴۰۴ شرکت آرکا — تمامی حقوق محفوظ است</span>
+      <div class="links">
+        <a href="#">راهنما</a>
+        <a href="#">پشتیبانی</a>
+        <a href="#">نسخه ۱.۴.۰</a>
+      </div>
+      <div class="status">
+        <span class="pulse"></span>
+        متصل به سرور
+      </div>
+    </footer>
+
+  </div><!-- /.main-col -->
+</div><!-- /.app-shell -->
+
+<script>
+  // تعامل‌های ساده‌ی رابط کاربری — تنها برای دموی این قالب
+  document.querySelectorAll('.note-compose, .task-compose').forEach((el) => {
+    el.addEventListener('click', () => {
+      alert(el.classList.contains('task-compose')
+        ? 'فرم افزودن کار جدید اینجا باز می‌شود.'
+        : 'فرم افزودن یادداشت جدید اینجا باز می‌شود.');
+    });
+  });
+
+  // تیک‌زدن کارهای امروز
+  document.querySelectorAll('.task-item').forEach((item) => {
+    item.addEventListener('click', () => item.classList.toggle('done'));
+  });
+</script>
+
+</body>
+</html>

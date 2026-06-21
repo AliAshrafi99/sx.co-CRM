@@ -1,0 +1,250 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="stat-grid">
+  <div class="stat-card">
+    <div class="top">
+      <span>Total Customers</span>
+      <div class="ico brass">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c.7-3.6 3-5.6 5.5-5.6s4.8 2 5.5 5.6"/></svg>
+      </div>
+    </div>
+    <div class="num">240</div>
+    <div class="delta">▲ +12 this month</div>
+  </div>
+  <div class="stat-card">
+    <div class="top">
+      <span>Today's Notes</span>
+      <div class="ico teal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M14 3v4h4"/></svg>
+      </div>
+    </div>
+    <div class="num">9</div>
+    <div class="delta">▲ +3 vs yesterday</div>
+  </div>
+  <div class="stat-card">
+    <div class="top">
+      <span>Pending Follow-ups</span>
+      <div class="ico danger">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v6l4 2"/></svg>
+      </div>
+    </div>
+    <div class="num">6</div>
+    <div class="delta down">▼ Needs contact today</div>
+  </div>
+  <div class="stat-card">
+    <div class="top">
+      <span>Monthly Conversion</span>
+      <div class="ico brass">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V10M11 19V5M18 19v-7"/></svg>
+      </div>
+    </div>
+    <div class="num mono">38%</div>
+    <div class="delta">▲ +4% vs last month</div>
+  </div>
+</div>
+
+<div class="dashboard-grid">
+
+  <section class="panel area-today">
+    <div class="panel__head">
+      <div>
+        <h2>Today</h2>
+        <div class="hint">Monday, Jun 22, 2026</div>
+      </div>
+    </div>
+    <div class="week-strip">
+      <div class="day"><span class="wd">Sat</span><span class="num-circle">20</span></div>
+      <div class="day"><span class="wd">Sun</span><span class="num-circle">21</span></div>
+      <div class="day is-today"><span class="wd">Mon</span><span class="num-circle">22</span></div>
+      <div class="day"><span class="wd">Tue</span><span class="num-circle">23</span></div>
+      <div class="day"><span class="wd">Wed</span><span class="num-circle">24</span></div>
+      <div class="day"><span class="wd">Thu</span><span class="num-circle">25</span></div>
+      <div class="day"><span class="wd">Fri</span><span class="num-circle">26</span></div>
+    </div>
+    <div class="task-compose">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg>
+      Add new task...
+    </div>
+    <ul class="task-list">
+      <li class="task-item done">
+        <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
+        <div class="body"><div class="title">Call Mohammad Hosseini for contract renewal</div></div>
+        <span class="time mono">09:00</span>
+      </li>
+      <li class="task-item">
+        <span class="check"></span>
+        <div class="body"><div class="title">Weekly sales team meeting</div></div>
+        <span class="time mono">11:30</span>
+      </li>
+      <li class="task-item">
+        <span class="check"></span>
+        <div class="body"><div class="title">Send invoice proposal to Negar Ahmadi</div></div>
+        <span class="time mono">13:00</span>
+      </li>
+      <li class="task-item urgent">
+        <span class="check"></span>
+        <div class="body">
+          <div class="title">Follow up with Ali Moradi's payments</div>
+          <div class="sub">2 days overdue</div>
+        </div>
+        <span class="time mono">15:30</span>
+      </li>
+      <li class="task-item">
+        <span class="check"></span>
+        <div class="body"><div class="title">Weekly backup of the customer list</div></div>
+        <span class="time mono">17:00</span>
+      </li>
+    </ul>
+  </section>
+
+  <section class="panel area-table">
+    <div class="panel__head">
+      <div>
+        <h2>Recent Customers</h2>
+        <div class="hint">Latest clients registered by the sales team</div>
+      </div>
+      <a href="#" class="link-more">View All →</a>
+    </div>
+    <table class="ledger-table">
+      <thead>
+        <tr>
+          <th>Customer Name</th>
+          <th>Phone Number</th>
+          <th>Registration Date</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="client-name">
+              <div class="avatar">SR</div>
+              <div>
+                <b>Sara Rezaei</b>
+                <div class="biz">Rosa Online Shop</div>
+              </div>
+            </div>
+          </td>
+          <td class="mono">0912 304 7711</td>
+          <td class="mono">2026/06/19</td>
+          <td><span class="status-dot active">Active</span></td>
+          <td><button class="row-action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></button></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="client-name">
+              <div class="avatar">MH</div>
+              <div>
+                <b>Mohammad Hosseini</b>
+                <div class="biz">Negah Ad Agency</div>
+              </div>
+            </div>
+          </td>
+          <td class="mono">0935 118 4420</td>
+          <td class="mono">2026/06/17</td>
+          <td><span class="status-dot pending">Pending</span></td>
+          <td><button class="row-action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></button></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="client-name">
+              <div class="avatar">NA</div>
+              <div>
+                <b>Negar Ahmadi</b>
+                <div class="biz">Parsian Boutique</div>
+              </div>
+            </div>
+          </td>
+          <td class="mono">0919 552 0087</td>
+          <td class="mono">2026/06/15</td>
+          <td><span class="status-dot active">Active</span></td>
+          <td><button class="row-action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></button></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="client-name">
+              <div class="avatar">AM</div>
+              <div>
+                <b>Ali Moradi</b>
+                <div class="biz">Bana Construction Co.</div>
+              </div>
+            </div>
+          </td>
+          <td class="mono">0938 776 2291</td>
+          <td class="mono">2026/06/12</td>
+          <td><span class="status-dot lost">Lost</span></td>
+          <td><button class="row-action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></button></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="client-name">
+              <div class="avatar">ZG</div>
+              <div>
+                <b>Zahra Ghasemi</b>
+                <div class="biz">Novin Language School</div>
+              </div>
+            </div>
+          </td>
+          <td class="mono">0901 443 6678</td>
+          <td class="mono">2026/06/10</td>
+          <td><span class="status-dot active">Active</span></td>
+          <td><button class="row-action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></button></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="panel area-notes">
+    <div class="panel__head">
+      <div>
+        <h2>Notes</h2>
+        <div class="hint">Your recorded workspace notes</div>
+      </div>
+    </div>
+    <div class="note-compose">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg>
+      Write a new note...
+    </div>
+    <div class="notes-feed">
+      <article class="note-card">
+        <span class="tag">Sara Rezaei</span>
+        <p>Follow up on June invoice; agreed to call tomorrow at 10:00 AM.</p>
+        <div class="meta">
+          <span class="mono">10:24</span>
+          <span class="pin">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17v5M8 13h8l-1-9H9l-1 9Z"/></svg>
+            Pinned
+          </span>
+        </div>
+      </article>
+      <article class="note-card">
+        <span class="tag">Mohammad Hosseini</span>
+        <p>Requested ad contract renewal for the next three months.</p>
+        <div class="meta">
+          <span class="mono">09:50</span>
+          <span class="pin"></span>
+        </div>
+      </article>
+      <article class="note-card">
+        <span class="tag">Negar Ahmadi</span>
+        <p>Liked the new product sample, waiting for final board approval.</p>
+        <div class="meta">
+          <span class="mono">Yesterday</span>
+          <span class="pin"></span>
+        </div>
+      </article>
+      <article class="note-card">
+        <span class="tag">General</span>
+        <p>Weekly sales meeting rescheduled to Tuesday at 14:00.</p>
+        <div class="meta">
+          <span class="mono">Yesterday</span>
+          <span class="pin"></span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+</div>
+{% endblock %}

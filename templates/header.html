@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>پنل کارمندان · دفتر کار</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- =========================================================
+     این فایل (header.html) شامل: <head> + شروع <body> + سایدبار
+     + نوار بالایی است. در یک پروژه‌ی واقعی این بخش را با
+     include سرور (مثلاً <?php include 'header.html'; ?> یا
+{#     {% include "header.html" %}) در ابتدای هر صفحه قرار دهید#}
+     و بعد از آن محتوای اختصاصی همان صفحه می‌آید.
+     ========================================================= -->
+
+<div class="app-shell">
+
+  <!-- ───────── سایدبار: تب‌های دفتر کار ───────── -->
+  <aside class="sidebar">
+    <div class="sidebar__brand">
+      <div class="mark">آک</div>
+      <div>
+        <div class="name">شرکت آرکا</div>
+        <div class="sub">پنل کارمندان</div>
+      </div>
+    </div>
+
+    <nav class="sidebar__nav">
+      <a href="#" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+        <span class="label-text">داشبورد</span>
+      </a>
+      <a href="#" class="nav-item is-active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c.7-3.6 3-5.6 5.5-5.6s4.8 2 5.5 5.6"/><circle cx="17" cy="8" r="2.6"/><path d="M15.5 14.6c2.4.2 4.2 2.1 4.8 5.4"/></svg>
+        <span class="label-text">مشتریان</span>
+        <span class="count">۲۴</span>
+      </a>
+      <a href="#" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M14 3v4h4"/><path d="M8.5 12.5h7M8.5 16h5"/></svg>
+        <span class="label-text">یادداشت‌ها</span>
+        <span class="count">۹</span>
+      </a>
+      <a href="#" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 19V10M11 19V5M18 19v-7"/></svg>
+        <span class="label-text">گزارش‌ها</span>
+      </a>
+
+      <div class="sidebar__section-label">حساب کاربری</div>
+      <a href="#" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M19.4 13.5a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.9 2.9l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6V20a2 2 0 1 1-4 0v-.2a1.7 1.7 0 0 0-1.1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.9-2.9l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.6-1H4a2 2 0 1 1 0-4h.2a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.9-2.9l.1.1a1.7 1.7 0 0 0 1.9.3H10a1.7 1.7 0 0 0 1-1.6V4a2 2 0 1 1 4 0v.2a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.9 2.9l-.1.1a1.7 1.7 0 0 0-.3 1.9V10a1.7 1.7 0 0 0 1.6 1H20a2 2 0 1 1 0 4h-.2a1.7 1.7 0 0 0-1.6 1Z"/></svg>
+        <span class="label-text">تنظیمات</span>
+      </a>
+    </nav>
+
+    <div class="sidebar__user">
+      <div class="avatar">ر.ک</div>
+      <div class="who">
+        <b>رضا کریمی</b>
+        <span>کارشناس فروش</span>
+      </div>
+      <button title="خروج" aria-label="خروج">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 17l5-5-5-5M20 12H9"/><path d="M9 19H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h3"/></svg>
+      </button>
+    </div>
+  </aside>
+
+  <div class="main-col">
+
+    <!-- ───────── نوار بالایی ───────── -->
+    <header class="topbar">
+      <div class="topbar__titles">
+        <div class="eyebrow">دوشنبه، ۱ تیر</div>
+        <h1>سلام رضا 👋</h1>
+      </div>
+
+      <label class="search-ledger">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input type="text" placeholder="جست‌وجوی مشتری، یادداشت...">
+      </label>
+
+      <div class="topbar__actions">
+        <button class="icon-btn" title="اعلان‌ها" aria-label="اعلان‌ها">
+          <span class="dot"></span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+        </button>
+        <button class="btn btn--ghost">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M14 3v4h4"/></svg>
+          یادداشت جدید
+        </button>
+        <button class="btn btn--brass">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          مشتری جدید
+        </button>
+      </div>
+    </header>
+
+    <main class="content">
+    <!-- محتوای اختصاصی هر صفحه از اینجا شروع می‌شود -->
