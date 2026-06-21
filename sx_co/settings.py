@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+# 🌟 نام پوشه پروژه/اپلیکیشن خود را اینجا اضافه کنید:
+    'sx_co',
 ]
 
 MIDDLEWARE = [

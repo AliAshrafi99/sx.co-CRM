@@ -107,16 +107,56 @@
     </footer>
 
   </div></div><script>
-  document.querySelectorAll('.note-compose, .task-compose').forEach((el) => {
-    el.addEventListener('click', () => {
-      alert(el.classList.contains('task-compose')
-        ? 'Add new task form opens here.'
-        : 'Add new note form opens here.');
-    });
-  });
+  // تابع باز کردن مدال‌ها
+  function openModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+      modal.style.display = 'flex';
+    }
+  }
 
-  document.querySelectorAll('.task-item').forEach((item) => {
-    item.addEventListener('click', () => item.classList.toggle('done'));
+  // تابع بستن مدال‌ها
+  function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+      modal.style.display = 'none';
+    }
+  }
+
+  // متصل کردن رویداد کلیک به دکمه‌ها پس از لود کامل صفحه
+  document.addEventListener("DOMContentLoaded", function() {
+
+    // ۱. پیدا کردن دکمه New Customer در هدر بالایی
+    const btnNewCustomer = document.querySelector(".btn--brass");
+    if (btnNewCustomer) {
+      btnNewCustomer.addEventListener("click", function() {
+        openModal("customerModal");
+      });
+    }
+
+    // ۲. پیدا کردن دکمه New Note در هدر بالایی
+    // چون ممکن است کلاس btn--ghost در جاهای دیگر هم باشد، با متن آن فیلتر می‌کنیم
+    const ghostButtons = document.querySelectorAll(".btn--ghost");
+    ghostButtons.forEach(btn => {
+      if (btn.textContent.includes("New Note")) {
+        btn.addEventListener("click", function() {
+          openModal("noteModal");
+        });
+      }
+    });
+
+    // ۳. متصل کردن دکمه‌های داخل خود صفحه داشبورد (Write a new note...)
+    const noteCompose = document.querySelector(".note-compose");
+    if (noteCompose) {
+      noteCompose.addEventListener("click", function() {
+        openModal("noteModal");
+      });
+    }
+
+    // ۴. قابلیت خط زدن تسک‌ها با کلیک روی آن‌ها
+    document.querySelectorAll('.task-item').forEach((item) => {
+      item.addEventListener('click', () => item.classList.toggle('done'));
+    });
   });
 </script>
 

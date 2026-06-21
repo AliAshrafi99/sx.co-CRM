@@ -38,3 +38,17 @@ def login_page(request):
 def dashboard(request):
 
     return render(request, 'dashboard.html')
+
+
+
+from django.shortcuts import render, redirect
+from .forms import CustomerForm, NoteForm
+
+def dashboard_view(request):
+    if request.method == 'POST':
+        # اگر فرم مشتری ارسال شده بود
+        if 'add_customer' in request.POST:
+            form = CustomerForm(request.POST)
+            if form.is_valid():
+                form.save() # 🌟 این خط جادویی داده‌ها را مستقیماً در دیتابیس ذخیره می‌کند!
+                return redirect('dashboard')

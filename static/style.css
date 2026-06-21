@@ -1,21 +1,20 @@
 /* ===================================================================
-   پنل کارمندان — دفتر کار دیجیتال
-   توکن‌های طراحی: رنگ، تایپوگرافی، فاصله‌گذاری
+   Staff Panel — Digital Workspace (English & LTR Optimized)
    =================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 :root{
-  /* رنگ */
-  --ink:        #12182B;   /* پس‌زمینه‌ی نوار کناری، تیترهای اصلی */
-  --ink-soft:   #1F2740;   /* سطح هاور/اکتیو در نوار کناری */
-  --ink-line:   #2B3350;   /* خط‌های ظریف داخل نوار کناری */
-  --paper:      #EEF1F4;   /* پس‌زمینه‌ی کلی صفحه */
-  --surface:    #FFFFFF;   /* کارت‌ها، جدول، پنل‌ها */
-  --brass:      #C99A3B;   /* رنگ اصلی برند — اکشن، تب فعال */
+  /* Colors */
+  --ink:        #12182B;   /* Sidebar background, main titles */
+  --ink-soft:   #1F2740;   /* Sidebar hover/active states */
+  --ink-line:   #2B3350;   /* Sidebar subtle inner borders */
+  --paper:      #EEF1F4;   /* Main page wrapper background */
+  --surface:    #FFFFFF;   /* Cards, tables, panels */
+  --brass:      #C99A3B;   /* Accent brand color */
   --brass-dark: #A87C28;
   --brass-tint: #FBF1DD;
-  --teal:       #2F6F68;   /* وضعیت مثبت / دکمه‌ی ثانویه */
+  --teal:       #2F6F68;
   --teal-tint:  #E4F0EE;
   --danger:     #C9533B;
   --danger-tint:#FBEAE5;
@@ -24,12 +23,12 @@
   --text-faint: #9AA1AC;
   --line:       #E1E5EA;
 
-  /* تایپوگرافی */
+  /* Typography */
   --font-display: 'Vazirmatn', sans-serif;
   --font-body: 'Vazirmatn', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  /* لایه‌بندی */
+  /* Layout */
   --sidebar-w: 256px;
   --radius-sm: 6px;
   --radius-md: 10px;
@@ -64,16 +63,16 @@ button{ cursor:pointer; }
 
 .mono{ font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 
-/* ===================== ساختار کلی صفحه ===================== */
+/* ===================== Grid Layout (Left Sidebar) ===================== */
 .app-shell{
   display: grid;
-  grid-template-columns: 1fr var(--sidebar-w); /* راست = ستون دوم در RTL */
+  grid-template-columns: var(--sidebar-w) 1fr; /* Sidebar Left, Content Right */
   min-height: 100vh;
 }
 
-/* ===================== نوار کناری — تب‌های دفتر کار ===================== */
+/* ===================== Sidebar Panel ===================== */
 .sidebar{
-  grid-column: 2;
+  grid-column: 1; /* First column on the left */
   grid-row: 1 / -1;
   background: var(--ink);
   color: #C7CCDA;
@@ -82,7 +81,7 @@ button{ cursor:pointer; }
   height: 100vh;
   display: flex;
   flex-direction: column;
-  border-left: 1px solid var(--ink-line);
+  border-right: 1px solid var(--ink-line);
 }
 
 .sidebar__brand{
@@ -150,14 +149,14 @@ button{ cursor:pointer; }
 .nav-item.is-active::before{
   content:"";
   position: absolute;
-  right: -12px;
+  left: -12px; /* Active bar indicator switched to left side */
   top: 8px; bottom: 8px;
   width: 3px;
   border-radius: 3px;
   background: var(--brass);
 }
 .nav-item .count{
-  margin-inline-start: auto;
+  margin-left: auto; /* Push counts to the right end */
   font-family: var(--font-mono);
   font-size: 11px;
   background: var(--ink-line);
@@ -192,16 +191,16 @@ button{ cursor:pointer; }
 .sidebar__user button:hover{ color:#fff; }
 .sidebar__user button svg{ width:17px; height:17px; }
 
-/* ===================== ستون محتوا ===================== */
+/* ===================== Content Column ===================== */
 .main-col{
-  grid-column: 1;
+  grid-column: 2; /* Occupies the second column */
   grid-row: 1 / -1;
   display: flex;
   flex-direction: column;
   min-width: 0;
 }
 
-/* ===================== هدر بالایی ===================== */
+/* ===================== Topbar ===================== */
 .topbar{
   position: sticky;
   top: 0;
@@ -249,7 +248,7 @@ button{ cursor:pointer; }
 .search-ledger input::placeholder{ color: var(--text-faint); }
 
 .topbar__actions{
-  margin-inline-start: auto;
+  margin-left: auto;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -267,7 +266,7 @@ button{ cursor:pointer; }
 .icon-btn:hover{ border-color: var(--brass); color: var(--brass-dark); }
 .icon-btn svg{ width: 18px; height: 18px; }
 .icon-btn .dot{
-  position:absolute; top:6px; left:6px;
+  position:absolute; top:6px; right:6px;
   width:7px; height:7px; border-radius:50%;
   background: var(--danger);
   border: 1.5px solid var(--paper);
@@ -297,7 +296,7 @@ button{ cursor:pointer; }
 }
 .btn--ghost:hover{ border-color: var(--teal); color: var(--teal); }
 
-/* ===================== محتوای صفحه ===================== */
+/* ===================== Content Wrapper ===================== */
 .content{
   flex: 1;
   padding: 24px 28px 60px;
@@ -342,39 +341,10 @@ button{ cursor:pointer; }
 }
 .stat-card .delta.down{ color: var(--danger); }
 
-.layout-2col{
-  display: grid;
-  grid-template-columns: 1.7fr 1fr;
-  gap: 16px;
-  align-items: start;
-}
-
-.panel{
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-card);
-  overflow: hidden;
-}
-.panel__head{
-  display:flex; align-items:center; justify-content:space-between;
-  padding: 16px 18px;
-  border-bottom: 1px solid var(--line);
-}
-.panel__head h2{
-  margin:0;
-  font-family: var(--font-display);
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--ink);
-}
-.panel__head .hint{ font-size:11.5px; color: var(--text-faint); margin-top:2px; }
-.link-more{ font-size: 12.5px; color: var(--teal); font-weight: 600; }
-
-/* جدول مشتریان به‌سبک دفتر */
+/* ===================== Ledger Table (Left Aligned) ===================== */
 .ledger-table{ width:100%; border-collapse: collapse; }
 .ledger-table th{
-  text-align: right;
+  text-align: left; /* Shifted to left alignment for English */
   font-size: 11.5px;
   font-weight: 600;
   color: var(--text-faint);
@@ -420,7 +390,7 @@ button{ cursor:pointer; }
 .row-action:hover{ color: var(--ink); background: var(--paper); }
 .row-action svg{ width:16px; height:16px; }
 
-/* فید یادداشت‌ها — کارت با گوشه‌ی تاشده (امضای طراحی) */
+/* ===================== Notes Feed Component ===================== */
 .notes-feed{
   padding: 14px;
   display: flex;
@@ -438,15 +408,15 @@ button{ cursor:pointer; }
   box-shadow: 0 1px 1px rgba(18,24,43,.03);
 }
 .note-card::after{
-  /* گوشه‌ی تاشده */
+  /* Folded corner signature effect (moved to right bottom) */
   content:"";
   position: absolute;
-  left: 0; bottom: 0;
+  right: 0; bottom: 0;
   width: 14px; height: 14px;
-  background: linear-gradient(135deg, transparent 50%, var(--paper) 50.5%);
+  background: linear-gradient(45deg, transparent 50%, var(--paper) 50.5%);
   border-top: 1px solid var(--line);
-  border-right: 1px solid var(--line);
-  border-bottom-left-radius: 2px;
+  border-left: 1px solid var(--line);
+  border-bottom-right-radius: 2px;
 }
 .note-card .tag{
   display:inline-block;
@@ -486,7 +456,7 @@ button{ cursor:pointer; }
 .note-compose:hover,
 .task-compose:hover{ border-color: var(--brass); color: var(--brass-dark); cursor:pointer; }
 
-/* ===================== فوتر ===================== */
+/* ===================== Footer ===================== */
 .app-footer{
   border-top: 1px solid var(--line);
   padding: 14px 28px;
@@ -501,271 +471,7 @@ button{ cursor:pointer; }
   width:6px; height:6px; border-radius:50%; background: var(--teal);
 }
 
-/* ===================== واکنش‌گرا ===================== */
-@media (max-width: 1040px){
-  .layout-2col{ grid-template-columns: 1fr; }
-  .stat-grid{ grid-template-columns: repeat(2,1fr); }
-}
-@media (max-width: 880px){
-  .app-shell{ grid-template-columns: 1fr; }
-  .sidebar{
-    grid-column: 1; grid-row: 1;
-    position: sticky; top:0; height:auto;
-    flex-direction: row; align-items:center;
-    border-left:none; border-bottom: 1px solid var(--ink-line);
-    overflow-x: auto;
-  }
-  .sidebar__brand{ border-bottom:none; border-left: 1px solid var(--ink-line); }
-  .sidebar__nav{ flex-direction:row; padding: 10px; }
-  .sidebar__user{ display:none; }
-  .nav-item span.label-text{ display:none; }
-  .main-col{ grid-column:1; grid-row:2; }
-  .topbar{ flex-wrap: wrap; padding: 14px 16px; }
-  .search-ledger{ order:3; max-width:none; flex-basis:100%; }
-  .content{ padding: 18px 16px 40px; }
-  .stat-grid{ grid-template-columns: 1fr 1fr; }
-  .app-footer{ flex-direction:column; gap:8px; align-items:flex-start; }
-}
-
-@media (prefers-reduced-motion: reduce){
-  *{ transition: none !important; animation: none !important; }
-}
-
-/* ===================================================================
-   صفحه‌ی ورود (Login)
-   =================================================================== */
-.auth-shell{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: 100vh;
-}
-
-/* ───────── پنل برند (سمت راست) ───────── */
-.auth-brand{
-  position: relative;
-  overflow: hidden;
-  background: var(--ink);
-  color: #fff;
-  padding: 44px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.auth-brand::before{
-  /* بافت خطوط دفترِ کار */
-  content:"";
-  position: absolute; inset: 0;
-  background-image: repeating-linear-gradient(
-    to bottom, transparent 0 35px, var(--ink-line) 35px 36px
-  );
-  opacity: .35;
-  mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 75%, transparent);
-}
-
-.auth-brand__top{
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.auth-brand__top .mark{
-  width: 36px; height: 36px;
-  border-radius: 9px;
-  background: linear-gradient(155deg, var(--brass) 0%, var(--brass-dark) 100%);
-  display: flex; align-items:center; justify-content:center;
-  color: var(--ink);
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 15px;
-  flex-shrink: 0;
-}
-.auth-brand__top .name{ font-family: var(--font-display); font-weight:700; font-size:15px; }
-.auth-brand__top .sub{ font-size: 11.5px; color: var(--text-faint); }
-
-.auth-brand__mid{ position: relative; padding: 30px 0; }
-.auth-brand__mid .eyebrow{
-  font-family: var(--font-mono);
-  font-size: 11.5px;
-  letter-spacing: .04em;
-  color: var(--brass);
-  margin-bottom: 10px;
-}
-.auth-brand__mid h2{
-  font-family: var(--font-display);
-  font-size: 27px;
-  font-weight: 800;
-  line-height: 1.55;
-  margin: 0 0 12px;
-  max-width: 380px;
-}
-.auth-brand__mid p{
-  font-size: 13.5px;
-  color: #AEB4C4;
-  max-width: 340px;
-  margin: 0;
-  line-height: 1.8;
-}
-
-/* استک کارت‌های یادداشت — تکرار امضای طراحی از داشبورد */
-.auth-brand__cards{
-  position: relative;
-  height: 168px;
-  margin-top: 26px;
-}
-.auth-brand__cards .note-card{
-  position: absolute;
-  width: 230px;
-  box-shadow: 0 18px 30px -14px rgba(0,0,0,.45);
-}
-.auth-brand__cards .note-card:nth-child(1){ top: 0; right: 0; transform: rotate(-4deg); z-index: 3; }
-.auth-brand__cards .note-card:nth-child(2){ top: 22px; right: 90px; transform: rotate(5deg); z-index: 2; opacity:.92; }
-.auth-brand__cards .note-card:nth-child(3){ top: 46px; right: 175px; transform: rotate(-7deg); z-index: 1; opacity:.8; }
-
-.auth-brand__bottom{
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.auth-seal{
-  width: 78px; height: 78px;
-  border-radius: 50%;
-  border: 1.5px dashed rgba(201,154,59,.55);
-  display: flex; align-items:center; justify-content:center;
-  transform: rotate(-9deg);
-  flex-shrink: 0;
-}
-.auth-seal__inner{
-  width: 58px; height: 58px;
-  border-radius: 50%;
-  border: 1px solid rgba(201,154,59,.4);
-  display: flex; flex-direction: column; align-items:center; justify-content:center;
-  gap: 2px;
-}
-.auth-seal__inner svg{ width:18px; height:18px; color: var(--brass); }
-.auth-seal__inner span{ font-family: var(--font-mono); font-size: 8px; color: var(--brass); letter-spacing: .03em; }
-.auth-brand__bottom .quote{
-  font-size: 11.5px;
-  color: var(--text-faint);
-  max-width: 220px;
-  line-height: 1.7;
-}
-
-/* ───────── ستون فرم (سمت چپ) ───────── */
-.auth-form-col{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px 32px;
-  background: var(--paper);
-}
-.auth-card{ width: 100%; max-width: 372px; }
-.auth-card .eyebrow{
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: .06em;
-  color: var(--text-faint);
-  margin-bottom: 8px;
-}
-.auth-card h1{
-  font-family: var(--font-display);
-  font-size: 23px;
-  font-weight: 800;
-  color: var(--ink);
-  margin: 0 0 8px;
-}
-.auth-card .lead{
-  font-size: 13px;
-  color: var(--text-soft);
-  margin: 0 0 28px;
-  line-height: 1.8;
-}
-
-.field{ margin-bottom: 16px; }
-.field label{
-  display: block;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text-soft);
-  margin-bottom: 7px;
-}
-.input-ledger{
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  padding: 10px 2px;
-  border-bottom: 1.5px solid var(--line);
-  background: transparent;
-  transition: border-color .15s ease;
-}
-.input-ledger:focus-within{ border-color: var(--brass); }
-.input-ledger svg{ width: 17px; height: 17px; color: var(--text-faint); flex-shrink: 0; }
-.input-ledger input{
-  flex: 1;
-  border: none; outline: none; background: none;
-  color: var(--text);
-  font-size: 13.5px;
-}
-.input-ledger input::placeholder{ color: var(--text-faint); }
-.input-ledger .toggle-eye{
-  background: none; border: none; padding: 2px;
-  color: var(--text-faint);
-}
-.input-ledger .toggle-eye:hover{ color: var(--brass-dark); }
-.input-ledger .toggle-eye svg{ width: 16px; height: 16px; }
-
-.row-between{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 4px 0 24px;
-}
-.checkbox-row{
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  font-size: 12.5px;
-  color: var(--text-soft);
-}
-.checkbox-row input{
-  width: 14px; height: 14px;
-  accent-color: var(--brass);
-}
-.link-brass{
-  font-size: 12.5px;
-  font-weight: 600;
-  color: var(--brass-dark);
-}
-.link-brass:hover{ color: var(--ink); }
-
-.btn-block{ width: 100%; justify-content: center; padding: 11.5px; font-size: 13.5px; }
-
-.form-alert{
-  display:none;
-  align-items: center;
-  gap: 8px;
-  background: var(--danger-tint);
-  color: var(--danger);
-  font-size: 12.5px;
-  padding: 10px 12px;
-  border-radius: var(--radius-sm);
-  margin-bottom: 16px;
-}
-.form-alert.is-visible{ display:flex; }
-.form-alert svg{ width:15px; height:15px; flex-shrink:0; }
-
-.auth-footnote{
-  text-align: center;
-  font-size: 12px;
-  color: var(--text-faint);
-  margin-top: 26px;
-  line-height: 1.8;
-}
-.auth-footnote .mono{ color: var(--text-soft); }
-
-/* ===================================================================
-   پنل «امروز» — تقویم هفتگی + چک‌لیست کارهای امروز
-   =================================================================== */
+/* ===================== Tasks List ===================== */
 .week-strip{
   display: flex;
   gap: 6px;
@@ -826,9 +532,7 @@ button{ cursor:pointer; }
 }
 .task-item.urgent .time{ color: var(--danger); font-weight: 600; }
 
-/* ===================================================================
-   گرید سه‌ستونیِ داشبورد: امروز / مشتریان / یادداشت‌ها
-   =================================================================== */
+/* ===================== Three-Column Dashboard Grid Layout ===================== */
 .dashboard-grid{
   display: grid;
   grid-template-columns: 300px 1.6fr 1fr;
@@ -840,6 +544,7 @@ button{ cursor:pointer; }
 .dashboard-grid .area-table{ grid-area: table; }
 .dashboard-grid .area-notes{ grid-area: notes; }
 
+/* ===================== Responsive Breakpoints ===================== */
 @media (max-width: 1280px){
   .dashboard-grid{
     grid-template-columns: 1fr 1fr;
@@ -856,10 +561,126 @@ button{ cursor:pointer; }
       "table"
       "notes";
   }
+  .stat-grid{ grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 880px){
+  .app-shell{ grid-template-columns: 1fr; }
+  .sidebar{
+    grid-column: 1; grid-row: 1;
+    position: sticky; top:0; height:auto;
+    flex-direction: row; align-items:center;
+    border-right:none; border-bottom: 1px solid var(--ink-line);
+    overflow-x: auto;
+  }
+  .sidebar__brand{ border-bottom:none; border-right: 1px solid var(--ink-line); }
+  .sidebar__nav{ flex-direction:row; padding: 10px; }
+  .sidebar__user{ display:none; }
+  .nav-item span.label-text{ display:none; }
+  .main-col{ grid-column:1; grid-row:2; }
+  .topbar{ flex-wrap: wrap; padding: 14px 16px; }
+  .search-ledger{ order:3; max-width:none; flex-basis:100%; }
+  .content{ padding: 18px 16px 40px; }
+  .stat-grid{ grid-template-columns: 1fr 1fr; }
+  .app-footer{ flex-direction:column; gap:8px; align-items:flex-start; }
 }
 
-@media (max-width: 900px){
-  .auth-shell{ grid-template-columns: 1fr; }
-  .auth-brand{ display: none; }
-  .auth-form-col{ min-height: 100vh; }
+/* ===================================================================
+   🌟 Modern & Styled Popups (Modals)
+   =================================================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(18, 24, 43, 0.55); /* Layer mask sync with ink */
+    backdrop-filter: blur(5px);         /* Elegant glass blur effect */
+    display: none;                      /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal-card {
+    background: var(--surface);
+    padding: 28px 32px;
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 440px;
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+    animation: fadeInModal 0.22s ease-out;
+}
+
+.modal-card h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-family: var(--font-display);
+    color: var(--ink);
+    font-size: 17px;
+    font-weight: 700;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 12px;
+}
+
+.modal-card label {
+    display: block;
+    margin: 14px 0 6px;
+    font-size: 12.5px;
+    color: var(--text-soft);
+    font-weight: 600;
+}
+
+.modal-card input[type="text"],
+.modal-card select,
+.modal-card textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    box-sizing: border-box;
+    background: #FAFBFC;
+    color: var(--text);
+    font-size: 13.5px;
+    transition: all 0.15s ease;
+}
+
+.modal-card input:focus,
+.modal-card select:focus,
+.modal-card textarea:focus {
+    outline: none;
+    border-color: var(--brass);
+    background: #FFFFFF;
+    box-shadow: 0 0 0 3px var(--brass-tint);
+}
+
+.modal-card textarea {
+    height: 110px;
+    resize: none;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 26px;
+    justify-content: flex-end;
+}
+
+.checkbox-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    color: var(--text-soft);
+    margin-top: 12px;
+}
+.checkbox-label input {
+    accent-color: var(--brass);
+    width: 15px;
+    height: 15px;
+}
+
+@keyframes fadeInModal {
+    from { opacity: 0; transform: scale(0.96) translateY(-10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
 }

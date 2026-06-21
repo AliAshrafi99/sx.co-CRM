@@ -117,81 +117,35 @@
         </tr>
       </thead>
       <tbody>
+        {% for customer in customers %}
         <tr>
           <td>
             <div class="client-name">
-              <div class="avatar">SR</div>
+              <div class="avatar">{{ customer.get_avatar_initials }}</div>
               <div>
-                <b>Sara Rezaei</b>
-                <div class="biz">Rosa Online Shop</div>
+                <b>{{ customer.name }}</b>
+                <div class="biz">{% if customer.company_name %}{{ customer.company_name }}{% else %}Personal{% endif %}</div>
               </div>
             </div>
           </td>
-          <td class="mono">0912 304 7711</td>
-          <td class="mono">2026/06/19</td>
-          <td><span class="status-dot active">Active</span></td>
-          <td><button class="row-action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></button></td>
-        </tr>
-        <tr>
+          <td class="mono">{{ customer.phone_number }}</td>
+          <td class="mono">{{ customer.created_at|date:"Y/m/d" }}</td>
           <td>
-            <div class="client-name">
-              <div class="avatar">MH</div>
-              <div>
-                <b>Mohammad Hosseini</b>
-                <div class="biz">Negah Ad Agency</div>
-              </div>
-            </div>
+            <span class="status-dot {{ customer.status }}">
+              {{ customer.get_status_display }}
+            </span>
           </td>
-          <td class="mono">0935 118 4420</td>
-          <td class="mono">2026/06/17</td>
-          <td><span class="status-dot pending">Pending</span></td>
-          <td><button class="row-action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></button></td>
-        </tr>
-        <tr>
           <td>
-            <div class="client-name">
-              <div class="avatar">NA</div>
-              <div>
-                <b>Negar Ahmadi</b>
-                <div class="biz">Parsian Boutique</div>
-              </div>
-            </div>
+            <button class="row-action">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>
+            </button>
           </td>
-          <td class="mono">0919 552 0087</td>
-          <td class="mono">2026/06/15</td>
-          <td><span class="status-dot active">Active</span></td>
-          <td><button class="row-action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></button></td>
         </tr>
+        {% empty %}
         <tr>
-          <td>
-            <div class="client-name">
-              <div class="avatar">AM</div>
-              <div>
-                <b>Ali Moradi</b>
-                <div class="biz">Bana Construction Co.</div>
-              </div>
-            </div>
-          </td>
-          <td class="mono">0938 776 2291</td>
-          <td class="mono">2026/06/12</td>
-          <td><span class="status-dot lost">Lost</span></td>
-          <td><button class="row-action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></button></td>
+          <td colspan="5" style="text-align: center; padding: 24px; color: #a0aec0;">No customers registered yet.</td>
         </tr>
-        <tr>
-          <td>
-            <div class="client-name">
-              <div class="avatar">ZG</div>
-              <div>
-                <b>Zahra Ghasemi</b>
-                <div class="biz">Novin Language School</div>
-              </div>
-            </div>
-          </td>
-          <td class="mono">0901 443 6678</td>
-          <td class="mono">2026/06/10</td>
-          <td><span class="status-dot active">Active</span></td>
-          <td><button class="row-action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></button></td>
-        </tr>
+        {% endfor %}
       </tbody>
     </table>
   </section>
@@ -208,43 +162,81 @@
       Write a new note...
     </div>
     <div class="notes-feed">
+      {% for note in notes %}
       <article class="note-card">
-        <span class="tag">Sara Rezaei</span>
-        <p>Follow up on June invoice; agreed to call tomorrow at 10:00 AM.</p>
+        <span class="tag">{{ note.tag }}</span>
+        <p>{{ note.content }}</p>
         <div class="meta">
-          <span class="mono">10:24</span>
+          <span class="mono">{{ note.created_at|date:"H:i" }}</span>
+          {% if note.is_pinned %}
           <span class="pin">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17v5M8 13h8l-1-9H9l-1 9Z"/></svg>
             Pinned
           </span>
+          {% endif %}
         </div>
       </article>
-      <article class="note-card">
-        <span class="tag">Mohammad Hosseini</span>
-        <p>Requested ad contract renewal for the next three months.</p>
-        <div class="meta">
-          <span class="mono">09:50</span>
-          <span class="pin"></span>
-        </div>
-      </article>
-      <article class="note-card">
-        <span class="tag">Negar Ahmadi</span>
-        <p>Liked the new product sample, waiting for final board approval.</p>
-        <div class="meta">
-          <span class="mono">Yesterday</span>
-          <span class="pin"></span>
-        </div>
-      </article>
-      <article class="note-card">
-        <span class="tag">General</span>
-        <p>Weekly sales meeting rescheduled to Tuesday at 14:00.</p>
-        <div class="meta">
-          <span class="mono">Yesterday</span>
-          <span class="pin"></span>
-        </div>
-      </article>
+      {% empty %}
+      <div style="text-align: center; padding: 24px; color: #a0aec0;">No notes found.</div>
+      {% endfor %}
     </div>
   </section>
 
+</div>
+
+<div id="customerModal" class="modal-overlay" style="display:none;">
+  <div class="modal-card">
+    <h3>Add New Customer</h3>
+    <form method="POST">
+      {% csrf_token %}
+      <input type="hidden" name="add_customer" value="1">
+
+      <label>Customer Name:</label>
+      <input type="text" name="name" required placeholder="John Doe">
+
+      <label>Company Name:</label>
+      <input type="text" name="company_name" placeholder="Acme Corp (Optional)">
+
+      <label>Phone Number:</label>
+      <input type="text" name="phone_number" required placeholder="0912...">
+
+      <label>Status:</label>
+      <select name="status">
+        <option value="active">Active</option>
+        <option value="pending" selected>Pending</option>
+        <option value="lost">Lost</option>
+      </select>
+
+      <div class="modal-actions">
+        <button type="submit" class="btn btn--brass">Save Customer</button>
+        <button type="button" class="btn btn--ghost" onclick="closeModal('customerModal')">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="noteModal" class="modal-overlay" style="display:none;">
+  <div class="modal-card">
+    <h3>Add New Note</h3>
+    <form method="POST">
+      {% csrf_token %}
+      <input type="hidden" name="add_note" value="1">
+
+      <label>Tag / Client Name:</label>
+      <input type="text" name="tag" placeholder="e.g., General, Urgent, Sara Rezaei">
+
+      <label>Content:</label>
+      <textarea name="content" required placeholder="Write your note here..."></textarea>
+
+      <label class="checkbox-label" style="margin-top: 15px;">
+        <input type="checkbox" name="is_pinned"> Pin this note at the top
+      </label>
+
+      <div class="modal-actions">
+        <button type="submit" class="btn btn--brass">Save Note</button>
+        <button type="button" class="btn btn--ghost" onclick="closeModal('noteModal')">Cancel</button>
+      </div>
+    </form>
+  </div>
 </div>
 {% endblock %}
