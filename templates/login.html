@@ -1,18 +1,18 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>welcome to SX.co</title>
-<!-- اصلاح آدرس‌دهی استاتیک جنگو برای فایل CSS -->
+<title>Welcome to SX.co</title>
 <link rel="stylesheet" href="{% static 'style.css' %}">
+
 </head>
 <body>
 
 <div class="auth-shell">
 
-  <!-- ───────── پنل برند ───────── -->
+  <!-- ───────── Brand Panel (Left) ───────── -->
   <aside class="auth-brand">
     <div class="auth-brand__top">
       <div class="mark">SX</div>
@@ -29,12 +29,12 @@
 
       <div class="auth-brand__cards">
         <article class="note-card">
-          <span class="tag">SARA </span>
+          <span class="tag">SARA</span>
           <p>Follow up on invoice number 98784; call at 10 am</p>
           <div class="meta"><span class="mono">10:45</span><span></span></div>
         </article>
         <article class="note-card">
-          <span class="tag">PITER</span>
+          <span class="tag">PETER</span>
           <p>Request for contract extension</p>
           <div class="meta"><span class="mono">09:30</span><span></span></div>
         </article>
@@ -47,7 +47,7 @@
     </div>
 
     <div class="auth-brand__bottom">
-      <div class="quote">"every note is a commitment to the customer"<br>Guide SX.co</div>
+      <div class="quote">"Every note is a commitment to the customer"<br>Guide SX.co</div>
       <div class="auth-seal">
         <div class="auth-seal__inner">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
@@ -57,14 +57,13 @@
     </div>
   </aside>
 
-  <!-- ───────── ستون فرم ورود ───────── -->
+  <!-- ───────── Login Form Column (Right) ───────── -->
   <main class="auth-form-col">
     <div class="auth-card">
       <div class="eyebrow">Employee login</div>
       <h1>Enter your office</h1>
       <p class="lead">Enter your email</p>
 
-      <!-- نمایش هوشمند خطاهای جنگو -->
       {% if messages %}
         {% for message in messages %}
           <div class="form-alert is-visible" id="loginAlert">
@@ -74,26 +73,23 @@
         {% endfor %}
       {% endif %}
 
-      <!-- اضافه شدن متد POST برای اتصال به جنگو -->
       <form id="loginForm" method="POST" action="">
-        <!-- توکن امنیتی جنگو -->
         {% csrf_token %}
 
         <div class="field">
-          <label for="email">email</label>
+          <label for="email">Email</label>
           <div class="input-ledger">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>
-            <!-- اینپوت ایمیل که جنگو از روی name="email" آن را می‌خواند -->
             <input type="email" id="email" name="email" placeholder="name@email.com" required autocomplete="username">
           </div>
         </div>
 
         <div class="field">
-          <label for="password">password</label>
+          <label for="password">Password</label>
           <div class="input-ledger">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
             <input type="password" id="password" name="password" placeholder="••••••••" required autocomplete="current-password">
-            <button type="button" class="toggle-eye" id="toggleEye" aria-label="نمایش رمز عبور">
+            <button type="button" class="toggle-eye" id="toggleEye" aria-label="Show password">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
             </button>
           </div>
@@ -102,9 +98,9 @@
         <div class="row-between">
           <label class="checkbox-row">
             <input type="checkbox" name="remember">
-            remember me
+            Remember me
           </label>
-          <a href="#" class="link-brass">forget password</a>
+          <a href="#" class="link-brass">Forget password?</a>
         </div>
 
         <button type="submit" class="btn btn--brass btn-block">
@@ -113,7 +109,7 @@
       </form>
 
       <p class="auth-footnote">
-        contact the technology department <span class="mono"></span>
+        Contact the technology department if you need help.
       </p>
     </div>
   </main>
@@ -121,13 +117,13 @@
 </div>
 
 <script>
-  // نمایش/مخفی‌کردن رمز عبور (بدون تغییر)
+  // پنهان و آشکار کردن رمز عبور
   const pwd = document.getElementById('password');
   const toggle = document.getElementById('toggleEye');
   toggle.addEventListener('click', () => {
     const isHidden = pwd.type === 'password';
     pwd.type = isHidden ? 'text' : 'password';
-    toggle.setAttribute('aria-label', isHidden ? 'مخفی‌کردن رمز عبور' : 'نمایش رمز عبور');
+    toggle.setAttribute('aria-label', isHidden ? 'Hide password' : 'Show password');
   });
 </script>
 

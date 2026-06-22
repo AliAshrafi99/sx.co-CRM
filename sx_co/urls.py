@@ -16,11 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from django.http import JsonResponse
 from sx_co.views import login_page, dashboard
-
+def dummy_chrome_json(request):
+    return JsonResponse({}, status=200)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', login_page, name='login'),
-    path('dashboard/', dashboard, name='dashboard')
+    path('dashboard/', dashboard, name='dashboard'),
+    path('.well-known/appspecific/com.chrome.devtools.json', dummy_chrome_json),
 ]

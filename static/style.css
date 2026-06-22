@@ -42,6 +42,7 @@ body{
   margin: 0;
   background: var(--paper);
   color: var(--text);
+
   font-family: var(--font-body);
   font-size: 14.5px;
   line-height: 1.7;
@@ -684,3 +685,333 @@ button{ cursor:pointer; }
     from { opacity: 0; transform: scale(0.96) translateY(-10px); }
     to { opacity: 1; transform: scale(1) translateY(0); }
 }
+
+
+
+
+
+/* ===================================================================
+   🔒 Authentications Styles (Login Page)
+   =================================================================== */
+
+.auth-shell {
+  display: flex;
+  min-height: 100vh;
+  background: var(--paper);
+}
+
+/* ───────── Brand Panel (Left Column) ───────── */
+.auth-brand {
+  flex: 1;
+  background: var(--ink);
+  color: #C7CCDA;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 460px;
+  border-right: 1px solid var(--ink-line);
+}
+
+.auth-brand__top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.auth-brand__top .mark {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(155deg, var(--brass) 0%, var(--brass-dark) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.auth-brand__top .name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16px;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.auth-brand__top .sub {
+  font-size: 12px;
+  color: var(--text-faint);
+}
+
+.auth-brand__mid {
+  margin: 40px 0;
+}
+
+.auth-brand__mid .eyebrow {
+  font-size: 11px;
+  color: var(--brass);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  font-family: var(--font-mono);
+  margin-bottom: 8px;
+}
+
+.auth-brand__mid h2 {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+  line-height: 1.4;
+}
+
+.auth-brand__mid p {
+  color: var(--text-faint);
+  margin: 0 0 24px 0;
+}
+
+.auth-brand__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.auth-brand__cards .note-card {
+  background: var(--ink-soft);
+  border: 1px solid var(--ink-line);
+}
+
+.auth-brand__cards .note-card p {
+  color: #E1E5EA;
+  margin-bottom: 6px;
+}
+
+.auth-brand__bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.auth-brand__bottom .quote {
+  font-style: italic;
+  font-size: 13px;
+  color: var(--text-faint);
+  line-height: 1.5;
+}
+
+.auth-seal {
+  display: flex;
+}
+
+.auth-seal__inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(201, 154, 59, 0.1);
+  color: var(--brass);
+  padding: 6px 12px;
+  border-radius: 99px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.auth-seal__inner svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* ───────── Login Form Column (Right Column) ───────── */
+.auth-form-col {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.auth-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: var(--shadow-card);
+}
+
+.auth-card .eyebrow {
+  font-size: 12px;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.auth-card h1 {
+  margin: 0 0 6px 0;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.auth-card .lead {
+  color: var(--text-soft);
+  margin: 0 0 24px 0;
+}
+
+/* Form Alerts */
+.form-alert {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--danger-tint);
+  color: var(--danger);
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.form-alert svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* Fields & Input Ledger */
+.field {
+  margin-bottom: 20px;
+}
+
+.field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.input-ledger {
+  display: flex;
+  align-items: center;
+  position: relative;
+  background: #FAFBFC;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  transition: all 0.15s ease;
+}
+
+.input-ledger:focus-within {
+  border-color: var(--brass);
+  background: #fff;
+  box-shadow: 0 0 0 3px var(--brass-tint);
+}
+
+.input-ledger svg {
+  width: 18px;
+  height: 18px;
+  color: var(--text-faint);
+  position: absolute;
+  left: 12px;
+}
+
+.input-ledger input {
+  width: 100%;
+  padding: 12px 12px 12px 40px; /* فضای خالی برای آیکون سمت چپ */
+  border: none;
+  background: transparent;
+  outline: none;
+  color: var(--text);
+}
+
+/* Toggle Password Eye */
+.toggle-eye {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--text-faint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle-eye:hover {
+  color: var(--text-soft);
+}
+
+.toggle-eye svg {
+  position: static; /* خنثی کردن پوزیشن مطلق برای دکمه چشم */
+}
+
+/* Utilities inside form */
+.row-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  font-size: 13px;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-soft);
+  cursor: pointer;
+}
+
+.checkbox-row input {
+  accent-color: var(--brass);
+  width: 16px;
+  height: 16px;
+}
+
+.link-brass {
+  color: var(--brass-dark);
+  font-weight: 500;
+}
+
+.link-brass:hover {
+  text-decoration: underline;
+}
+
+.btn-block {
+  width: 100%;
+  justify-content: center;
+  padding: 12px;
+}
+
+.auth-footnote {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-faint);
+  margin: 24px 0 0 0;
+}
+
+/* ───────── Responsive Design ───────── */
+@media (max-width: 880px) {
+  .auth-shell {
+    flex-direction: column;
+  }
+  .auth-brand {
+    max-width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--ink-line);
+    padding: 30px 20px;
+  }
+  .auth-brand__mid {
+    margin: 20px 0;
+  }
+  .auth-form-col {
+    padding: 30px 16px;
+  }
+  .auth-card {
+    padding: 24px 20px;
+  }
+}
+
